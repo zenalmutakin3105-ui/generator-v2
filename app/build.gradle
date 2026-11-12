@@ -1,0 +1,34 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.rekaciptaselera.generatorpo'
+    compileSdk 35
+
+    defaultConfig {
+        // Paket tersendiri agar APK Web App dapat diuji berdampingan dengan Beta 0.2.
+        applicationId 'com.rekaciptaselera.generatorpo.webapp'
+        minSdk 26
+        targetSdk 35
+        versionCode 1
+        versionName '1.0.0-webapp-beta'
+    }
+
+    buildTypes {
+        debug { versionNameSuffix '-debug' }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    // Dipin ke 1.8.0 agar kompatibel dengan Android SDK 35 / AGP 8.9.2.
+    implementation 'androidx.browser:browser:1.8.0'
+}
